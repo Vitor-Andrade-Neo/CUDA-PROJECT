@@ -9,12 +9,7 @@ def scale(q_t, k_t, norma_q, norma_k, n, m):
     q_t = q_t / norma_q.view(-1, 1) 
     k_t = k_t / norma_k.view(-1, 1)  
     return q_t, k_t
-
-def print_matrix(matrix):
-    for row in matrix:
-        print(" ".join(f"{elem:.4f}" for elem in row))
-    print()
-
+    
 def main():
     n = 2
     m = 3
@@ -27,10 +22,14 @@ def main():
     q_scaled, k_scaled = scale(init_q, init_k, norma_q, norma_k, n, m)
 
     print("Scaled matrix q:")
-    print_matrix(q_scaled)
+    for row in q_scaled:
+        print(" ".join(f"{elem:.4f}" for elem in row))
+    print()
 
     print("\nScaled matrix k:")
-    print_matrix(k_scaled)
+    for row in k_scaled:
+        print(" ".join(f"{elem:.4f}" for elem in row))
+    print()
 
 if __name__ == "__main__":
     main()
